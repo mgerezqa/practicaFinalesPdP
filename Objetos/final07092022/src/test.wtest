@@ -1,0 +1,30 @@
+import Final.*
+
+test "Punto D" {
+	const pepo = new Heroe()
+	const heroe = new Heroe(aliados = #{pepo})
+	const habilidad1 = new Habilidad(poder = 10)
+	const habilidad2 = new Habilidad(poder = 15)
+	heroe.agregarHabilidad(habilidad1)
+	heroe.agregarHabilidad(habilidad2)
+
+// Invocar el método poder() en un objeto de Heroe
+//var poderTotal = heroe.poder()  // Devolverá 25 (10 + 15)
+	assert.equals(25,heroe.poder())
+
+}
+
+test "Punto E : Heroe a Villano"{
+	
+	const pepo = new Heroe()
+	const armaPower = new Arma(danioBase = 10, areaDeEfecto = 100)
+	const villa = new Villano(arma =armaPower, enemigos = #{pepo})
+	const heroe = new Heroe(enemigos = #{pepo})
+	const habilidad1 = new Habilidad(poder = 10)
+	const habilidad2 = new Habilidad(poder = 15)
+	heroe.agregarHabilidad(habilidad1)
+	heroe.agregarHabilidad(habilidad2)
+	
+	
+	
+}
