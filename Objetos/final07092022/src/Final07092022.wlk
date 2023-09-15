@@ -1,14 +1,7 @@
-class Persona{
-	var clase
-	
-	}
-
-
 class Personaje{
-	const enemigos = #{}
-	
-	
+	const enemigos = #{}	
 	var property salud = 0 //salud 
+	
 	method recibirDanio(cantidad,personaje){
 		if(salud < 0)
 		throw new DomainException(message = "El personaje esta muerto")
@@ -22,10 +15,7 @@ class Personaje{
 	
 	method atacar(personaje){
 		
-	}
-	
-	
-	
+	}	
 }
 
 class Villano inherits Personaje {
@@ -103,8 +93,8 @@ class Habilidad {
 
 
 
-const armaDePrueba = new Arma(danioBase = 20,areaDeEfecto = 10)
-const sonic = new Persona (clase = new Villano(arma = armaDePrueba))
-const villanoTipico = new Persona (clase = new Villano ( arma = armaDePrueba))
-const hereoTipico = new Persona(clase = new Heroe ())
+//const armaDePrueba = new Arma(danioBase = 20,areaDeEfecto = 10)
+//const sonic = new Persona (clase = new Villano(arma = armaDePrueba))
+//const villanoTipico = new Persona (clase = new Villano ( arma = armaDePrueba))
+//const hereoTipico = new Persona(clase = new Heroe ())
 //sonic.cambiarDeProfesion(villanoTipico)//si es heroe cambia  a villano

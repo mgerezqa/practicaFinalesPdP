@@ -1,4 +1,4 @@
-import Final.*
+import Final07092022.*
 
 test "Punto D" {
 	const pepo = new Heroe()

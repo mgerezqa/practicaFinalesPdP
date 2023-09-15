@@ -1,0 +1,79 @@
+import herencia.*
+
+describe "hechiceros"{
+
+test "La energia maxima de los aprendices es 50"{
+	const aprendiz = new AprendizDeBrujo()
+	assert.equals(50,aprendiz.energiaMaxima())
+}
+
+test "La energia maxima de los archimagos es 100 mas el doble de su nivel"{
+	const archimago = new Archimago(nivel = 5)
+	assert.equals(110,archimago .energiaMaxima())
+}
+
+test "La energia maxima de los hechiceros supremos es 500"{
+	const hechiceroSupremo = new HechiceroSupremo()
+	assert.equals(500,hechiceroSupremo .energiaMaxima())
+}
+
+	
+}
+
+describe "hechizos"{
+
+test "Si un aprendiz tiene 10 de energia entonces podrá realizar un hechizo curativo de 5"{
+	const aprendiz = new AprendizDeBrujo(energia = 10)
+//	const otroAprendiz = new AprendizDeBrujo(energia = 20)
+	const hechizoCurativo = new HechizoCurativo(costoDeEnergia =5)
+	assert.that(aprendiz.puedeRealizarHechizo(hechizoCurativo))
+}	
+	
+test "Si un hechicero uso un hechizo curativo, hace consume la mitad de energia de la que hace recuperar"{
+	const aprendiz = new AprendizDeBrujo(energia = 20)
+	const otroAprendiz = new AprendizDeBrujo(energia = 20)
+	const hechizoCurativo = new HechizoCurativo(costoDeEnergia =10)
+	aprendiz.usarHechizo(hechizoCurativo,otroAprendiz )
+	assert.equals(15,aprendiz.energia())
+	assert.equals(30,otroAprendiz.energia())
+}
+
+test "Si un hechicero uso un hechizo curativo, sobre si mismo podrá recuperar energia"{
+	const aprendiz = new AprendizDeBrujo(energia = 20)
+	const hechizoCurativo = new HechizoCurativo(costoDeEnergia =10)
+	aprendiz.usarHechizo(hechizoCurativo,aprendiz)
+	assert.equals(25,aprendiz.energia())
+
+}
+
+test "los archimagos pueden usar cualquier hechizo que no esté prohibido"{
+	const archimago = new Archimago(nivel = 5,energia = 10)
+	const hechizoCurativo = new HechizoCurativo(costoDeEnergia =10)
+	assert.that(archimago .puedeRealizarHechizo(hechizoCurativo))
+	
+}
+
+test "los archimagos No pueden usar hechizos prohibidos"{
+	const archimago = new Archimago(nivel = 5)
+	const hechizoAvada = new HechizoAvada()
+	assert.notThat(archimago .puedeRealizarHechizo(hechizoAvada))
+
+}
+
+test "Si un hechicero uso avada kedavra sobre otro hechicero, el afectado quedará en 0 de energia y el que lo lanzó se le disminuirá 100 de energia"{
+	const hechiSupremo = new HechiceroSupremo(energia = 200 ) //energia 200
+	const otrohechiSupremo= new HechiceroSupremo(energia = 300) //energia 300
+	const hechizoAvada = new HechizoAvada()
+	
+	hechiSupremo.usarHechizo(hechizoAvada,otrohechiSupremo)
+	assert.equals(100,hechiSupremo.energia())
+	assert.equals(0,otrohechiSupremo.energia())
+	
+}
+
+}
+
+describe "progresión de rangos"{
+	
+	
+}

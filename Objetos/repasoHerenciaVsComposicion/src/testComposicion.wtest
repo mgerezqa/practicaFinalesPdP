@@ -1,0 +1,87 @@
+import composicion.*
+
+describe "hechiceros"{
+
+	test "La energia maxima de los aprendices es 50"{
+		
+		const noob = new Hechicero(rango = aprendiz,energia = 250,nivel = 0)
+		noob.recuperarEnergia(10)
+		assert.equals(50,noob.energia()) 
+	}
+	
+	test "La energia maxima de los archimagos es 100 mas el doble de su nivel"{
+		
+		const archiNoob = new Hechicero(rango = archimago,energia = 1,nivel = 1)
+		archiNoob.recuperarEnergia(25)
+		assert.equals(26,archiNoob.energia())
+		archiNoob.recuperarEnergia(200)
+		assert.equals(102,archiNoob.energia())
+	}
+	
+	test "La energia maxima de los hechiceros supremos es 500"{
+	
+		const supreNoob = new Hechicero(rango = supremo,energia = 400,nivel = 1)
+		supreNoob.recuperarEnergia(250)
+		assert.equals(500,supreNoob.energia())
+	}
+
+	
+}
+
+describe "hechizos"{
+
+	test "Si un aprendiz tiene 10 de energia entonces podrá realizar un hechizo curativo de 5"{
+		const noob = new Hechicero(rango = aprendiz,energia = 10,nivel = 0)
+		const hechiCurativo = new hechizoCurativo(energia = 5)
+		noob.usarHechizo(hechiCurativo)
+		assert.equals(12.5,noob.energia()) 
+	}
+	
+	
+	test "los archimagos pueden usar cualquier hechizo que no esté prohibido"{
+		const noob = new Hechicero(rango = archimago,energia = 100,nivel = 0)
+		const hechiCurativo = new hechizoCurativo(energia = 10)
+		noob.usarHechizo(hechiCurativo)
+		assert.equals(100,noob.energia()) 
+		
+	}
+	
+	test "los archimagos No pueden usar hechizos prohibidos"{
+		const noob = new Hechicero(rango = archimago,energia = 100,nivel = 0)
+		const junior = new Hechicero(rango = aprendiz,energia = 10,nivel = 0)
+		noob.enemigo(junior)
+		
+		const bolaDeFuego = new avadaKedavra()
+
+		assert.throwsException({ noob.usarHechizo(bolaDeFuego)})
+		
+	}
+		
+	test "Si un hechicero uso  avada kedavra sobre otro hechicero,
+	 el afectado quedará en 0 de energia
+	 y el que lo lanzó se le disminuirá 100 de energia"{
+	
+		const noob = new Hechicero(rango = supremo,energia = 500)
+		const junior = new Hechicero(rango = supremo,energia = 200)
+		
+		noob.enemigo(junior)
+		const bolaDeFuego = new avadaKedavra()
+		noob.usarHechizo(bolaDeFuego)
+		assert.equals(0,junior.energia())
+		assert.equals(400,noob.energia())
+		
+
+		
+	}
+
+}
+
+describe "tutores"{
+	test "Para que un tutor considere que su aprendiz es lo suficientemente groso debe cumplir con su criterio"{
+
+	}
+	test "Si un aprendiz usa un hechizo y su tutor lo considera suficientemente groso lo dejará avanzar de rango"{
+
+	}
+	
+}		
