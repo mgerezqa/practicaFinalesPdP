@@ -3,7 +3,8 @@
  * para los juego de mesa tiene que tener estar en el rango de edad que indica el juego y 
  * para los videojuegostiene que tener una edad superior a la minima determinad para el genero del mismo y menor a 80 
  * Ademas los videojuegos solo se pueden jugar si se tiene una consola que lo soporte con lo cual
- * solo podra jugarlo si tiene alguna de esas consolas */
+ * solo podra jugarlo si tiene alguna de esas consolas
+ *  */
 
 /*Consignas
  * 1. Critique la solución presentada en terminos de declaratividad, polimorfismo,delegacion encapsulamiento y hererencia
