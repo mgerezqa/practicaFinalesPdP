@@ -1,0 +1,7 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "final17122022:lib"
+
+    - path: "./test"
+      component: "final17122022:test:final17122022-test"

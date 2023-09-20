@@ -1,0 +1,7 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "finalesSeptiembre:lib"
+
+    - path: "./test"
+      component: "finalesSeptiembre:test:finalesSeptiembre-test"
