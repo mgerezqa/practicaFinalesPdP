@@ -1,0 +1,37 @@
+import solucionPropuesta.*
+
+describe "cliente con publicidades tradicionales"{
+	
+	test "una publicidad que no está activa no tiene costo"{
+	const publiEstandar = new PublicidadTradicional(plan = estandar,estaActiva = false)
+	const cliente = new Cliente(publicidades = [publiEstandar])
+	assert.equals(cliente.costoTotalDePublicidadesActivas(),0)
+	}
+	test "un cliente que contrato una publicidad tradicional estandar tienen un costo de 1000" {
+	const publiEstandar = new PublicidadTradicional(plan = estandar)
+	const cliente = new Cliente(publicidades = [publiEstandar])
+	assert.equals(cliente.costoTotalDePublicidadesActivas(),1000)
+
+}
+
+test "un cliente que contrato una publicidad platinum y 3 estandar tiene un costo total de 3800" {
+	const publiEstandarA = new PublicidadTradicional(plan = estandar)
+	const publiEstandarB = new PublicidadTradicional(plan = estandar)
+	const publiEstandarC = new PublicidadTradicional(plan = estandar)
+	const publiPlatinum = new PublicidadTradicional(plan = platinum)
+	
+	const cliente = new Cliente(publicidades = [publiEstandarA,publiEstandarB,publiEstandarC,publiPlatinum])
+	assert.equals(cliente.costoTotalDePublicidadesActivas(),3800)
+
+}
+	
+}
+
+
+describe "cliente con publicidades no tradicionales"{
+	test "un cliente que contrato una publicidad no tradicional en tv y radio tiene un costo de 5000" {
+	const publiNoEstandar = new PublicidadNoTradicional(medios = [radio,tv])
+	const cliente = new Cliente(publicidades = [publiNoEstandar])
+	assert.equals(cliente.costoTotalDePublicidadesActivas(),5000)
+}	
+}
