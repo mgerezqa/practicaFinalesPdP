@@ -1,0 +1,27 @@
+
+import solucionPropuesta.*
+
+test "Un granjero que alimenta a un caballo que tiene una racion diaria de 100, multiplica la energia del caballo en 2" {
+	const caballo = new Caballo (energia = 100 , racionDiaria = 100)
+	const granjero = new Granjero (animales = [caballo])
+	granjero.alimentarAnimales()
+	assert.equals(caballo.energia(),200)
+
+}
+
+
+test "Un granjero que alimenta a un chancho que pesa 50kg, aumenta su peso en 3" {
+	const chancho = new Chancho(kilos = 50)
+	const granjero = new Granjero (animales = [chancho])
+	granjero.alimentarAnimales()
+	assert.equals(chancho.kilos(),53)
+
+}
+
+test "Un granjero que alimenta a un chancho que pesa 51kg, aumenta su peso en 2" {
+	const chancho = new Chancho(kilos = 51)
+	const granjero = new Granjero (animales = [chancho])
+	granjero.alimentarAnimales()
+	assert.equals(chancho.kilos(),53)
+
+}
