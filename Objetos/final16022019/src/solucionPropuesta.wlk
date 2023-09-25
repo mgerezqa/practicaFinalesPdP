@@ -77,3 +77,20 @@ object estacionEspacial{
 //	1c. Falso. Por punto b.
 //  1d. Verdadero. El modelo actual no contempla el manejo de errores, sino que improvisa con un retorno de mensaje por una rama
 // de un if
+
+//2 ver solución propuesta
+//3 , se implementó una solución nueva, haciendo el correcto uso de los conceptos:
+
+//delegación : Se delega en cada rol, la verificación de requisitos por parte del tripulante
+
+// herencia : Se crea una interfaz llamada Rol que actua como clase abstracta para las clases hijas, Obrero , Mr Fusion y Libre,
+//logrando evitar la repetición de comportamiento para verificar la mayoria de edad y a la vez permitiendo generar nuevos comportamientos propios para sus subclases
+
+//Polimorfismo: Se demuestra polimorfismo en los métodos como cumpleRequisitos. 
+//Cada clase derivada (como Obrero, MrFusion, y Capitan) proporciona su propia implementación de este método,
+// lo que permite que el método se comporte de manera diferente según el tipo de objeto que lo invoca.
+
+//Encapsulamiento: 
+// Las propiedades de las clases, rol, edad, fuerza, y nave, están encapsuladas 
+//dentro de las clases y solo se pueden acceder a través de métodos públicos. 
+//Por ejemplo, el método cambiarDeRol encapsula el cambio de rol y verifica los requisitos antes de realizar el cambio.
