@@ -73,7 +73,3 @@ test "Si un hechicero uso avada kedavra sobre otro hechicero, el afectado quedar
 
 }
 
-describe "progresión de rangos"{
-	
-	
-}

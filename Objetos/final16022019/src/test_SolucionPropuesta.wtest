@@ -1,0 +1,39 @@
+import solucionPropuesta.*
+
+test "Un tripulante que inicialmente no tiene ningun rol , es mayor de edad y fuerza 60, puede cambiar de rol a obrero " {
+	const rangoObrero = new Obrero()
+	const obrero = new Tripulante(fuerza = 60 , edad = 19)
+	obrero.cambiarDeRol(rangoObrero)
+	assert.equals(rangoObrero,obrero.rol())
+}
+
+test "Un tripulante que inicialmente no tiene ningun rol , NO es mayor de edad y fuerza 60,no puede cambiar de rol" {
+	const rangoObrero = new Obrero()
+	const obrero = new Tripulante(fuerza = 60 , edad = 16)
+	assert.throwsException({obrero.cambiarDeRol(rangoObrero)})
+	
+}
+
+test "Un tripulante que quiere cambiar al rol de Mr Fusion y no tiene el suficiente conocimiento no podra hacerlo" {
+	const rangoMrFusion= new MrFusion(conocimiento = 5)
+	const bebu = new Tripulante(fuerza = 60 , edad = 20)
+	assert.throwsException({bebu.cambiarDeRol(rangoMrFusion)})
+
+}
+
+test "Un tripulante que quiere cambiar al rol de Mr Fusion y tiene el suficiente conocimiento y edad podra hacerlo" {
+	const rangoMrFusion= new MrFusion(conocimiento = 60)
+	const bebu = new Tripulante(fuerza = 60 , edad = 20)
+	bebu.cambiarDeRol(rangoMrFusion)
+	assert.equals(rangoMrFusion,bebu.rol())
+	
+}
+
+test "Un tripulante que quiere ser Capitan y tiene el suficiente conocimiento y fuerza podra hacerlo" {
+	const rangoCapitan = new Capitan(conocimiento = 60)
+	const bebu = new Tripulante(fuerza = 74, edad = 20)
+	bebu.cambiarDeRol(rangoCapitan)
+	assert.equals(rangoCapitan,bebu.rol())
+	
+}
+	
