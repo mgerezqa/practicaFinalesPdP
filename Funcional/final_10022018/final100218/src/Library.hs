@@ -24,7 +24,7 @@ f h p = any (<h) . map p . snd
 -- f :: Ord a1 => a1 -> (a2 -> a1) -> (a3, [a2]) -> Bool
 
 -- 2
-algunoDeLaListaCumpleCriterio :: Ord a1 => a1 -> (a2 -> a1) -> (a3, [a2]) -> Bool
+algunoDeLaListaCumpleCriterio :: Ord a => a -> (b -> a) -> (c, [b]) -> Bool
 algunoDeLaListaCumpleCriterio criterio funcion = any (<criterio) . map funcion . listaDeLaTupla
 
 listaDeLaTupla :: (a, b) -> b
