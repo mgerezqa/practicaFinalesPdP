@@ -42,6 +42,16 @@ deudaPorLibro( digital( _ , PesoEnKB),Deuda):-
 deudaPorLibro( papel(CantidadDePaginas, _),Deuda):-
     Deuda is CantidadDePaginas * 0.05.
 
+:- begin_tests(deudas).
+
+test(deudas_por_usuario,nondet):-
+    sol_deudaTotal(martina,27.91484375),
+    sol_deudaTotal(george,32.4953125).
+        
+:- end_tests(deudas).
+
+
+
 % ******************   PREGUNTAS    *******************
 
 % 1. Escribir una consulta individual y una existencial para deudaTotal/2 justificando el resultado de ambas.
@@ -52,15 +62,14 @@ deudaPorLibro( papel(CantidadDePaginas, _),Deuda):-
 % 3. En caso de ser necesario plantee una solución que mejore los puntos anteriores.
 
 
-
 % ******************   RESPUESTAS    *******************
 
-deudaTotal(martina, Deuda).
+% deudaTotal(martina, Deuda).
 
 % El resultado será la deuda total de martina, en este caso 27,91, pues los predicados findall, de la deudaTotal, unifican todas las compras de los distintos formatos
-% existentes de los libres de martina y acumulan la deuda en una lista que luego es sumada.
+% existentes de los libros de martina y acumulan la deuda en una lista que luego es sumada.
 
-deudaTotal(_, Deuda).
+% deudaTotal(_, Deuda).
 
 % Para este caso, el predicado no se comportara de acuerdo a lo esperado, que es unificar los totales de todos los usuarios que tengan deuda, ya que el predicado deudaTotal
 % no es inversible para la variable Usuario
@@ -68,9 +77,9 @@ deudaTotal(_, Deuda).
 
 % 2) Falso. La solución  responde al modelo actual de soportes de libros, pero en caso de querer incorporar mas soportes a futuro, por ejemplo , un soporte que sea un libro de alquiler,
 % habria que agregar tanto los hechos para incluir este nuevo soporte, como modificar el predicado deudaTotal , ya que el mismo está fuertemente acoplado a 
-% la solución actual, el mismo realiza el calculo de la Deuda mediante el conteo y suma de los predicados que están ligados en los findall de la consulta.
+% la solución actual, el mismo realiza el calculo de la Deuda mediante el conteo y suma de los predicados que están ligados a la consulta de los findall.
 % Por lo tanto, en caso de incorporar mas soportes y querer seguir usando el modelo actual, habria que agregar , la sentencia que representa el calculo aritmetico, el findall 
-% que realice la agrupación de matcheo, la sumatoria, y por ultimo incorporar la sumatoria a al calculo final de la Deuda.   
+% que realice la agrupación de macheo, la sumatoria, y por ultimo incorporar la sumatoria al calculo final de la Deuda.   
 
 
 % 3) ver solucion propuesta:
